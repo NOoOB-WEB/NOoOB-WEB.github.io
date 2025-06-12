@@ -1,60 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Reset some basic styles */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Animate a vibrant dark gradient as the page’s background */
+/* Animated dark gradient background */
 body {
     font-family: 'Raleway', sans-serif;
     background: linear-gradient(270deg, #0F2027, #203A43, #2C5364, #0F2027);
     background-size: 800% 800%;
     animation: gradient 20s ease infinite;
-
-    /* Center the container vertically and horizontally */
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
 
-/* A glassmorphism vibe for our container */
-div {
+/* Main glassmorphism container for text */
+.main-container {
     text-align: center;
     background: rgba(255, 255, 255, 0.15);
     padding: 2rem 3rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     animation: slideInDown 1.5s ease-out forwards;
 }
 
-/* Styling for the headings with fade-in animation and a subtle text shadow */
+/* Headings style using the old fadeIn animation */
 h2,
 h3 {
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     opacity: 0;
     animation: fadeIn 1.5s forwards;
 }
 
-/* Stagger animations with delays */
 h2 {
     font-size: 2.5rem;
     animation-delay: 0.5s;
+    margin-bottom: 10px;
     position: relative;
+    /* Required for the underline pseudo-element */
 }
 
 h3 {
     font-size: 1.5rem;
-    margin-top: 10px;
     animation-delay: 1s;
 }
 
@@ -65,23 +63,54 @@ h2::after {
     width: 0;
     height: 3px;
     background: #fff;
-    transition: width 0.5s;
     margin: 10px auto 0;
+    transition: width 0.5s ease;
 }
 
 h2:hover::after {
     width: 50%;
 }
 
-/* Hover effects to add a subtle glow and scale-up */
+/* Hover effects for h2 and h3: subtle glow and scale-up */
 h2:hover,
 h3:hover {
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
     transform: scale(1.05);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Keyframes for the animated background gradient */
+/* Glass-like container for icons inside the main container (more transparent) */
+.icon-box {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    /* Much more transparent background */
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Extremely faint border */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: inline-flex;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeInIcons 1.5s forwards;
+    animation-delay: 1.5s;
+}
+
+/* Icon images styling */
+.icon-box img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.icon-box img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Keyframes for background gradient animation */
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -96,7 +125,7 @@ h3:hover {
     }
 }
 
-/* Keyframes for sliding the container in from above */
+/* Animation for container slide-in */
 @keyframes slideInDown {
     0% {
         opacity: 0;
@@ -109,7 +138,7 @@ h3:hover {
     }
 }
 
-/* Keyframes for fading in text elements */
+/* FadeIn keyframes for headings (old animation) */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -120,7 +149,18 @@ h3:hover {
     }
 }
 
-/* Responsive adjustments for smaller screens */
+/* FadeIn keyframes for icons */
+@keyframes fadeInIcons {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
     h2 {
         font-size: 2rem;
@@ -130,7 +170,12 @@ h3:hover {
         font-size: 1.2rem;
     }
 
-    div {
-        padding: 1rem 1.5rem;
+    .main-container {
+        padding: 1.5rem 2rem;
+    }
+
+    .icon-box img {
+        width: 30px;
+        height: 30px;
     }
 }
