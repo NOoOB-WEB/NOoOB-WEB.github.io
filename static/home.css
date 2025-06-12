@@ -1,5 +1,136 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animate a vibrant dark gradient as the page’s background */
 body {
-    font-family: 'Raleway';
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(270deg, #0F2027, #203A43, #2C5364, #0F2027);
+    background-size: 800% 800%;
+    animation: gradient 20s ease infinite;
+
+    /* Center the container vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* A glassmorphism vibe for our container */
+div {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: slideInDown 1.5s ease-out forwards;
+}
+
+/* Styling for the headings with fade-in animation and a subtle text shadow */
+h2,
+h3 {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+/* Stagger animations with delays */
+h2 {
+    font-size: 2.5rem;
+    animation-delay: 0.5s;
+    position: relative;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    animation-delay: 1s;
+}
+
+/* Underline effect for h2 on hover */
+h2::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #fff;
+    transition: width 0.5s;
+    margin: 10px auto 0;
+}
+
+h2:hover::after {
+    width: 50%;
+}
+
+/* Hover effects to add a subtle glow and scale-up */
+h2:hover,
+h3:hover {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Keyframes for the animated background gradient */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Keyframes for sliding the container in from above */
+@keyframes slideInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for fading in text elements */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    div {
+        padding: 1rem 1.5rem;
+    }
 }
