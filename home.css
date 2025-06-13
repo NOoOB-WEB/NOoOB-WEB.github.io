@@ -164,3 +164,44 @@ h3:hover {
         height: 30px;
     }
 }
+.links {
+    width: 400px;             /* Set a fixed width */
+    margin: 0 auto;           /* Center the container horizontally */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.links h3 {
+    flex-basis: 100%;         /* Forces the heading to occupy its own row */
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.links a {
+    display: inline-flex;
+}
+
+.links a img {
+    width: 40px;              /* Adjust icon size as needed */
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.links a img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
